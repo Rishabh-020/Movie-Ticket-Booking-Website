@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineBook</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #header-bar{
+            display: flex;
+            width: 100%;
+            height: 10vh;
+        }
+        #logo{
+            width: 20%;
+        }
+        .header-function{
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            padding-top: 10px;
+            width: 60%;
+        }
+        a{
+            text-decoration: none;
+        }
+        .user-actions{
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header-bar">
+            <div id="logo">
+                <h1>CineBook</h1>
+            </div>
+            <nav class="header-function">
+                <a href="#" class="active">Movies</a>
+                <a href="#">Theaters</a>
+                <a href="#">Offers</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="user-actions">
+                <button id="login-btn">Login</button>
+                <button id="signup-btn">Sign Up</button>
+            </div>
+        </div>
+    </header>
+</body>
+</html>
