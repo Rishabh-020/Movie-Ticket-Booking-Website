@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: url(../images/LoginBack.jpg) center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.form-container {
+    display: flex;
+    width: 1000px;
+    height: 80vh;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    backdrop-filter: blur(7px);
+    overflow: hidden;
+}
+
+.col-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 55%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(30px);
+    border-radius: 0 30% 20% 0;
+    transition: border-radius .3s;
+    overflow: hidden;
+    text-align: center;
+}
+
+.image-layer {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.form-image-main {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-image {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    max-width: 400px;
+}
+
+.featured-words {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    word-wrap: break-word;
+    max-width: 90%;
+}
