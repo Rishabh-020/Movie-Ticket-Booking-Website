@@ -225,3 +225,17 @@ body {
     margin-block:50px 30px ;
     }
 }
+@keyframes fade {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-container {
+    animation: fade 1.5s ease-out forwards;
+}
