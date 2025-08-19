@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+header {
+    background-color: black;
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 20px 20px;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #e50914;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background-color: #e50914;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #e50914;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.login-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #e50914;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #f40612;
+    /* brighter on hover */
+    transform: translateY(-2px);
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    padding: 50px 150px;
+}
+.form-page{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(32, 32, 32);
+    padding: 30px;
+}
+.heading {
+    background-image: url("../images/ContactUS.avif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headingtxt {
+    color: white;
+    font-size: 2.5rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+.information{
+    padding: 30px;
+}
+.iconinfo{
+    display: grid;
+    grid-template-columns:1fr 1fr ;
+    gap: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+.iconinfo span,
+.iconinfo p {
+    display: flex;
+    
+    align-items: center;
+    gap: 8px;
+}
+
+.iconinfo span {
+    font-size: 28px;
+    color: #444;
+    justify-content: flex-start;
+}
+.map {
+    margin-top: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
