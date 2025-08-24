@@ -5,72 +5,6 @@
     font-family: 'Poppins', sans-serif;
     color: white;
 }
-header {
-    background-color: black;
-    backdrop-filter: blur(8px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 20px 20px;
-    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-}
-
-header.scrolled {
-    background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(12px);
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.logo span {
-    color: #e50914;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    position: relative;
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-    background-color: #e50914;
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #e50914;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
 
 .login-btn {
     padding: 10px 20px;
@@ -86,7 +20,6 @@ header.scrolled {
 
 .login-btn:hover {
     background-color: #f40612;
-    /* brighter on hover */
     transform: translateY(-2px);
 }
 .container{
@@ -129,19 +62,20 @@ header.scrolled {
     gap: 20px;
     max-width: 600px;
     margin: auto;
+    padding: 25px;
 }
 .iconinfo span,
 .iconinfo p {
     display: flex;
-    
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 8px;
 }
 
 .iconinfo span {
     font-size: 28px;
-    color: #444;
-    justify-content: flex-start;
+    margin-bottom: 10px;
 }
 .map {
     margin-top: 30px;
@@ -151,4 +85,37 @@ header.scrolled {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+#inp,#textarea{
+    width: 400px;
+    padding: 5px 10px;
+    height: 35px;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.292);
+    color:white;
+    margin: 10px 0px 25px 0px;
+    border-radius: 5px;
+}
+#textarea{
+    height: 130px;
+    resize: none;
+}
+#inp::placeholder,#textarea::placeholder{
+    color: white;
+}
+#textarea:focus,#inp:focus{
+    transition: 0.5s ;
+    outline: none;
+}
+
+#subbtn{
+    width: 400px;
+    height: 35px;
+    border-radius:5px;
+    background-color: rgba(128, 128, 128, 0.292);
+    border: none;
+}
+#subbtn:hover{
+    cursor: pointer;
+
 }

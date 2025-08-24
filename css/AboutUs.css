@@ -1,0 +1,126 @@
+.about-hero {
+    background: url("https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.about-hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    z-index: 1;
+    position: relative;
+}
+
+/* About Content */
+.about-section {
+    padding: 4rem 2rem;
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.about-section img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.about-section .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    color: red;
+    margin-bottom: 1rem;
+}
+
+.about-section p {
+    margin-bottom: 1.2rem;
+    color: #ccc;
+}
+
+/* Team Section */
+.team {
+    padding: 4rem 2rem;
+    background: #1a1a1a;
+    text-align: center;
+}
+
+.team h2 {
+    color: red;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.member {
+    background: #262626;
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.member:hover {
+    transform: translateY(-8px);
+}
+
+.member img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.member h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.member p {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    background: #000;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-section {
+        grid-template-columns: 1fr;
+    }
+
+    .about-hero h1 {
+        font-size: 2.2rem;
+    }
+}

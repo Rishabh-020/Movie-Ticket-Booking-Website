@@ -4,24 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="..//CSS/ContactUs.css">
+    <link rel="stylesheet" href="../CSS/ContactUs.css">
+    <link rel="stylesheet" href="../CSS/headerFooter.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
-
 </head>
 <body>
     <!-- Header -->
     <header>
     <nav class="navbar">
-        <div class="logo">Quick<span>Show</span></div>
+        <div class="logo">Cine<span>Book</span></div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Movies</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="movie.html">Movies</a></li>
             <li><a href="aboutus.html">About</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
         </ul>
         <div class="nav-actions">
-            <button class="login-btn">Login</button>
+           <button class="login-btn" onclick="window.location.href='Login.html'">Login</button>
         </div>
     </nav>
     </header>
@@ -32,17 +31,17 @@
      <div class="container">
         <div class="form-page">
             <form action="">
-                <h3>Contact Us</h3>
-                <h1>Get In Touch</h1>
+                <h2>Contact Us</h2>
+                <h1 style="margin-top:10px;">Get In Touch</h1><br><br>
                 Name <br>
-                <input type="text" name="" id="" placeholder="Your Name..." required><br>
+                <input type="text" name="" id="inp" placeholder="Your Name..." required><br>
                 Email <br>
-                <input type="text" name="" id="" placeholder="example@gmail.com" required><br>
+                <input type="text" name="" id="inp" placeholder="example@gmail.com" required><br>
                 Subject <br>
-                <input type="text" name="" id="" placeholder="Title..." required><br>
+                <input type="text" name="" id="inp" placeholder="Title..." required><br>
                 Message <br>
                 <textarea type="text" id="textarea" placeholder="Type Here..." rows="5" cols="30" required></textarea><br>
-                <button type="submit">Send Now</button>
+                <button type="submit" id="subbtn">Send Now</button>
                 </form>
         </div>
         <div class="information">
@@ -72,14 +71,38 @@
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5453743.038887993!2d72.3489178308358!3d31.00356813607479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964aa9af2df0f%3A0xf435a44d54c4b72f!2sPunjab!5e0!3m2!1sen!2sin!4v1692109300000!5m2!1sen!2sin" 
                 width="100%" 
                 height="300" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
+                style="border:0;" >
                 </iframe>
             </div>
         </div>
      </div>
     <!-- Footer -->
+     <footer>
+    <div class="footer-content">
+        <div class="footer-left">
+            <div class="logo">Cine<span>Book</span></div>
+            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+            <div class="store-buttons">
+                <img src="google-play.png" alt="Google Play">
+                <img src="app-store.png" alt="App Store">
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4>Get in touch</h4>
+            <p>+1-234-567-890</p>
+            <p>contact@example.com</p>
+        </div>
+    </div>
+    <p class="copyright">Copyright 2025 © CineBook. All Rights Reserved.</p>
+</footer>
 </body>
 </html>

@@ -1,248 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us - CineVerse</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - CineVerse</title>
+    <link rel="stylesheet" href="/CSS/headerFooter.css" />
+    <link rel="stylesheet" href="/CSS/AboutUs.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">Cine<span>Book</span></div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="movie.html">Movies</a></li>
+          <li><a href="aboutus.html">About</a></li>
+          <li><a href="ContactUs.html">Contact Us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="login-btn" onclick="window.location.href='Login.html'">Login</button>
+        </div>
+      </nav>
+    </header>
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <h1>About CineBook</h1>
+    </section>
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #0d0d0d;
-      color: #fff;
-      line-height: 1.6;
-    }
-
-    /* Navbar */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.85);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #ffcc00;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #ffcc00;
-    }
-
-    /* About Hero Section */
-    .about-hero {
-      background: url('https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      height: 60vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
-
-    .about-hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-    }
-
-    .about-hero h1 {
-      font-size: 3rem;
-      z-index: 1;
-      position: relative;
-    }
-
-    /* About Content */
-    .about-section {
-      padding: 4rem 2rem;
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-
-    .about-section img {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-    }
-
-    .about-section .text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .about-section h2 {
-      font-size: 2rem;
-      color: #ffcc00;
-      margin-bottom: 1rem;
-    }
-
-    .about-section p {
-      margin-bottom: 1.2rem;
-      color: #ccc;
-    }
-
-    /* Team Section */
-    .team {
-      padding: 4rem 2rem;
-      background: #1a1a1a;
-      text-align: center;
-    }
-
-    .team h2 {
-      color: #ffcc00;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .team-members {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-    }
-
-    .member {
-      background: #262626;
-      padding: 1.5rem;
-      border-radius: 12px;
-      transition: transform 0.3s ease;
-    }
-
-    .member:hover {
-      transform: translateY(-8px);
-    }
-
-    .member img {
-      width: 100%;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-    }
-
-    .member h3 {
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-
-    .member p {
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-
-    /* Footer */
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .about-section {
-        grid-template-columns: 1fr;
-      }
-      .about-hero h1 {
-        font-size: 2.2rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">CineVerse</div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#movies">Movies</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="about-hero">
-    <h1>About CineVerse</h1>
-  </section>
-
-  <!-- About Content -->
-  <section class="about-section">
-    <div class="text">
-      <h2>Who We Are</h2>
-      <p>
-        At <strong>CineVerse</strong>, we bring the magic of cinema to your fingertips. From timeless classics to the latest blockbusters, we strive to create a seamless movie experience for all film enthusiasts.
-      </p>
-      <p>
-        Founded with a passion for storytelling, our mission is to celebrate the art of cinema and provide movie lovers a platform that feels immersive, engaging, and exciting.
-      </p>
-    </div>
-    <div>
-      <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80" alt="About CineVerse">
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section class="team">
-    <h2>Meet Our Team</h2>
-    <div class="team-members">
-      <div class="member">
-        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Team Member">
-        <h3>Rahul Sharma</h3>
-        <p>Founder & CEO</p>
+    <!-- About Content -->
+    <section class="about-section">
+      <div class="text">
+        <h2>Who We Are</h2>
+        <p>
+          At <strong>CineVerse</strong>, we bring the magic of cinema to your
+          fingertips. From timeless classics to the latest blockbusters, we
+          strive to create a seamless movie experience for all film enthusiasts.
+        </p>
+        <p>
+          Founded with a passion for storytelling, our mission is to celebrate
+          the art of cinema and provide movie lovers a platform that feels
+          immersive, engaging, and exciting.
+        </p>
       </div>
-      <div class="member">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Team Member">
-        <h3>Priya Singh</h3>
-        <p>Creative Director</p>
+      <div>
+        <img
+          src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80"
+          alt="About CineVerse"
+        />
       </div>
-      <div class="member">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member">
-        <h3>Amit Verma</h3>
-        <p>Lead Developer</p>
-      </div>
-      <div class="member">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member">
-        <h3>Neha Patel</h3>
-        <p>Marketing Head</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 CineVerse. All Rights Reserved.</p>
-  </footer>
-</body>
+    <!-- Team Section -->
+    <section class="team">
+      <h2>Meet Our Team</h2>
+      <div class="team-members">
+        <div class="member">
+          <img
+            src="https://randomuser.me/api/portraits/men/75.jpg"
+            alt="Team Member"
+          />
+          <h3>Rahul Sharma</h3>
+          <p>Founder & CEO</p>
+        </div>
+        <div class="member">
+          <img
+            src="https://randomuser.me/api/portraits/women/65.jpg"
+            alt="Team Member"
+          />
+          <h3>Priya Singh</h3>
+          <p>Creative Director</p>
+        </div>
+        <div class="member">
+          <img
+            src="https://randomuser.me/api/portraits/men/32.jpg"
+            alt="Team Member"
+          />
+          <h3>Amit Verma</h3>
+          <p>Lead Developer</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-left">
+          <div class="logo">Cine<span>Book</span></div>
+          <p>
+            Lorem Ipsum has been the industry's standard dummy text ever since
+            the 1500s...
+          </p>
+          <div class="store-buttons">
+            <img src="google-play.png" alt="Google Play" />
+            <img src="app-store.png" alt="App Store" />
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Get in touch</h4>
+          <p>+1-234-567-890</p>
+          <p>contact@example.com</p>
+        </div>
+      </div>
+      <p class="copyright">Copyright 2025 © CineBook. All Rights Reserved.</p>
+    </footer>
+  </body>
 </html>

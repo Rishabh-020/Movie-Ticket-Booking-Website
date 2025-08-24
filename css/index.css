@@ -1,0 +1,98 @@
+.hero {
+    background-color: #000;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    padding: 40px 60px;
+    margin-top: 60px;
+    background-image: url('new-background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero .meta {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 600px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ddd;
+}
+
+/* === BUTTONS WITH ANIMATION === */
+.buy-btn,
+.show-more,
+.btn {
+    background: #e50914;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+}
+
+.buy-btn:hover,
+.show-more:hover,
+.btn:hover {
+    background: #f40612;
+    box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+    transform: translateY(-3px) scale(1.03);
+}
+
+.show-more {
+    margin-top: 35px;
+}
+
+.now-showing {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.movies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.movie-card {
+    background: #222;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 4px;
+}
