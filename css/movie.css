@@ -1,0 +1,81 @@
+.movies {
+    text-align: center;
+    padding: 30px;
+}
+
+.movies h2 {
+    margin-bottom: 20px;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    /* keeps it from stretching to 5–6 posters */
+    margin: 0 auto;
+    /* centers grid */
+}
+
+.movie-card {
+    background: #1c1c1c;
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 320px;
+    /* fix the height */
+    object-fit: cover;
+    /* crop instead of stretching */
+    border-radius: 8px;
+}
+
+.buy-btn {
+    margin-top: 10px;
+    background: red;
+    border: none;
+    padding: 10px 16px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.buy-btn:hover {
+    background: darkred;
+    transform: scale(1.05);
+}
+
+.buy-btn.disabled {
+    background: grey;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.show-more {
+    margin-top: 20px;
+}
+
+.show-more button {
+    background: red;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.show-more button:hover {
+    background: darkred;
+    transform: scale(1.05);
+}

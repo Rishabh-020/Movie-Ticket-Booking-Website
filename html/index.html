@@ -1,103 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/CSS/index.css">
-<link rel="stylesheet" href="/CSS/headerFooter.css">
-<title>CineBook</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/CSS/headerFooter.css">
+    <link rel="stylesheet" href="/CSS/index.css">
+    <title>CineBook</title>
 </head>
+
 <body>
 
-<header>
-    <nav class="navbar">
-        <div class="logo">Cine<span>Book</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="movie.html">Movies</a></li>
-            <li><a href="aboutus.html">About</a></li>
-            <li><a href="ContactUs.html">Contact Us</a></li>
-        </ul>
-        <div class="nav-actions">
-            <button class="login-btn" onclick="window.location.href='Login.html'">Login</button>
-        </div>
-    </nav>
-</header>
-
-<section class="hero" style="background-image: url(Cillian-Murphy-Oppenheimer-Still-Publicity-H-2022.jpeg); background-size: cover; background-position: center;">
-    <div class="hero-content">
-        <img src="OIP.jpeg" alt="Marvel Studios" class="studio-logo">
-        <h1>OppenHeimer</h1>
-        <p class="movie-meta">Action | Adventure | Sci-Fi | 2018 | 2h 8m</p>
-        <p class="movie-desc">Oppenheimer follows the life of J. Robert Oppenheimer, the American theoretical physicist who helped develop the first nuclear weapons during World War II.</p>
-        <button href="#" class="btn" id="explore-movies">Explore Movies</button>
-    </div>
-</section>
-
-<section class="now-showing">
-    <h2>Now Showing</h2>
-    <div class="movies-grid">
-        <div class="movie-card">
-            <img src="dragon.jpg" alt="How to Train Your Dragon">
-            <h3>How to Train Your Dragon</h3>
-            <p>2025 · Action | Family · 2h 5m</p>
-            <button class="buy-btn">Buy Tickets</button>
-        </div>
-        <div class="movie-card">
-            <img src="ko.jpg" alt="K.O.">
-            <h3>K.O.</h3>
-            <p>2025 · Action | Drama · 1h 24m</p>
-            <button class="buy-btn">Buy Tickets</button>
-        </div>
-        <div class="movie-card">
-            <img src="mi.jpg" alt="Mission Impossible">
-            <h3>Mission: Impossible - The Final...</h3>
-            <p>2025 · Action | Adventure · 2h 50m</p>
-            <button class="buy-btn">Buy Tickets</button>
-        </div>
-        <div class="movie-card">
-            <img src="straw.jpg" alt="STRAW">
-            <h3>STRAW</h3>
-            <p>2025 · Thriller | Drama · 1h 45m</p>
-            <button class="buy-btn">Buy Tickets</button>
-        </div>
-    </div>
-    <button class="show-more">Show More</button>
-</section>
-
-<section class="trailers">
-    <h2 style="text-align: center;">Trailers</h2>
-    <div class="trailer-video">
-        <iframe width="100%" height="500" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-    </div>
-</section>
-
-<footer>
-    <div class="footer-content">
-        <div class="footer-left">
+    <header>
+        <nav class="navbar">
             <div class="logo">Cine<span>Book</span></div>
-            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
-            <div class="store-buttons">
-                <img src="google-play.png" alt="Google Play">
-                <img src="app-store.png" alt="App Store">
+            <ul class="nav-links">
+                <li class="homebtn" id="homepage"><a href="#" style="color: red;">Home</a></li>
+                <li><a href="#now-showing">Movies</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button onclick="window.location.href='login.html'" class="buy-btn">Login</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="/images/deaadpool.jpg" alt="Marvel Studios" class="studio-logo">
+            <h1>Deadpool</h1>
+            <p class="movie-meta"><b>Comedy | Action | Drama | 2016 | 1h 48m</b></p>
+            <p class="movie-desc">Deadpool ambushes Ajax and his convoy on an expressway. Throughout the ambush, Wade
+                shows the viewer the events leading to how he became Deadpool.</p>
+            <a href="#" class="buy-btn">Buy Tickets</a>
+        </div>
+    </section>
+
+    <section class="now-showing" id="now-showing">
+        <h2>Now Showing</h2>
+        <div class="movies-grid">
+            <div class="movie-card">
+                <img src="https://m.media-amazon.com/images/I/81vRg6RVaFL.jpg" alt="How to Train Your Dragon">
+                <h3>JOKER</h3>
+                <p>2019 · Thriller | Crime · 2h 2m</p>
+                <button class="buy-btn">Buy Tickets</button>
+            </div>
+            <div class="movie-card">
+                <img src="https://m.media-amazon.com/images/I/61k7Mx2IjzL.UF894,1000_QL80.jpg" alt="K.O.">
+                <h3>THE GODFATHER</h3>
+                <p>1972 · Action | Crime · 1h 24m</p>
+                <button class="buy-btn">Buy Tickets</button>
+            </div>
+            <div class="movie-card">
+                <img src="https://m.media-amazon.com/images/M/MV5BYWI3ODJlMzktY2U5NC00ZjdlLWE1MGItNWQxZDk3NWNjN2RhXkEyXkFqcGc@.V1_FMjpg_UX1000.jpg"
+                    alt="Mission Impossible">
+                <h3>THE LAST OF US</h3>
+                <p>2023 · Action | Adventure · 2h 50m</p>
+                <button class="buy-btn">Buy Tickets</button>
+            </div>
+            <div class="movie-card">
+                <img src="https://cdn.prod.website-files.com/6009ec8cda7f305645c9d91b/66a4263d01a185d5ea22eeec_6408f6e7b5811271dc883aa8_batman-min.png"
+                    alt="STRAW">
+                <h3>THE BATMAN</h3>
+                <p>2022 · Thriller | Action · 2h 56m</p>
+                <button class="buy-btn">Buy Tickets</button>
             </div>
         </div>
-        <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul class="element">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="AboutUs.html">About Us</a></li>
-                <li><a href="ContactUs.html">Contact Us</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-            </ul>
+        <a href="movie.html"><button class="show-more">Show More</button></a>
+    </section>
+
+    <section class="trailers">
+        <h2>Trailers</h2>
+        <div class="trailer-video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/tg52up16eq0?si=vICyiAS8d-ICc7cL"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+    </section>
+
+    <footer>
+        <div>
+            <h2><span style="color:white;">Cine</span><span style="color:#e50914;">Book</span></h2>
+            <p>Welcome to <strong>CineBook</strong>, your go-to platform for discovering and booking the latest movies
+                with ease.We combine sleek design, smooth functionality, and a user-friendly interface to give you the
+                best movie ticket booking experience.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
         <div class="footer-contact">
-            <h4>Get in touch</h4>
-            <p>+1-234-567-890</p>
-            <p>contact@example.com</p>
+            <h3>Get in touch</h3>
+            <p><i class="fas fa-envelope"></i> rhythm26@gmail.com</p>
+            <p><i class="fas fa-envelope"></i> rishabh98@gmail.com</p>
+            <p><i class="fas fa-envelope"></i> rishi78@gmail.com</p>
         </div>
-    </div>
-    <p class="copyright">Copyright 2025 © CineBook. All Rights Reserved.</p>
-</footer>
+
+        <div class="bottom-text">
+            <p>Copyright 2025 © CineBook. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
+
 </html>
