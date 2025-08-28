@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <!-- Link to Google Fonts for Inter and Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+        
+        /* --- Footer Styles --- */
+        footer {
+            background: linear-gradient(to top, #000000, #111111);
+            color: #fff;
+            padding: 50px 10%;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* FIX: Set a 2:1 ratio for columns */
+            gap: 60px; /* FIX: Increased gap */
+            border-top: 2px solid rgba(255, 0, 0, 0.4);
+            align-items: start; /* FIX: Align items to the top */
+        }
+
+        footer h2,
+        footer h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        footer p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        footer .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        footer .social-icons a {
+            color: #bbb;
+            font-size: 20px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #e50914;
+            transform: scale(1.2);
+        }
+
+        footer .bottom-text {
+            grid-column: 1 / -1; /* Span full width */
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        /* === Media Queries for Responsiveness === */
+
+        /* For smaller desktops and large tablets */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 40px;
+                gap: 40px;
+            }
+        }
+
+        /* For most tablets */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column; /* Stack the form and info vertically */
+                padding: 40px 30px; /* Adjusted padding */
+                align-items: stretch; /* Unset alignment for stacked view */
+            }
+
+            .form-page,
+            .information {
+                width: 100%; /* Make each section take the full width */
+            }
+            .information {
+                padding: 40px 0 0 0;
+                text-align: center;
+            }
+            .iconinfo {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            footer {
+                grid-template-columns: 1fr; /* Stack footer columns */
+            }
+        }
+
+        /* For mobile phones */
+        @media (max-width: 576px) {
+            .container {
+                padding: 30px 15px;
+            }
+
+            .form-page {
+                padding: 25px 20px;
+            }
+            
+            .form-page h1 {
+                font-size: 1.8rem;
+            }
+
+            .form-page h2 {
+                font-size: 1rem;
+            }
+
+            .iconinfo {
+                grid-template-columns: 1fr; /* Display icons in a single column */
+                gap: 25px;
+            }
+
+            .icon {
+                flex-direction: column; /* Stack icon and text vertically */
+                text-align: center;
+                gap: 8px;
+            }
+            
+            /* Footer mobile styles */
+            footer {
+                padding: 40px 20px;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <footer>
+        <div>
+            <h2><span style="color:white;">Cine</span><span style="color:#e50914;">Book</span></h2>
+            <p>Welcome to <strong>CineFusion</strong>, your go-to platform for discovering and booking the latest movies
+                with ease.We combine sleek design, smooth functionality, and a user-friendly interface to give you the
+                best movie ticket booking experience.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Get in touch</h3>
+            <p><i class="fas fa-envelope"></i> rhythm26@gmail.com</p>
+            <p><i class="fas fa-envelope"></i> rishabh98@gmail.com</p>
+            <p><i class="fas fa-envelope"></i> rishi78@gmail.com</p>
+        </div>
+
+        <div class="bottom-text">
+            <p>Copyright 2025 © CineFusion. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
