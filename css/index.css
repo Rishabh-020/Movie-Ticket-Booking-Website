@@ -19,7 +19,13 @@ body{
         linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%),
         url(/images/deadpool.jpeg) no-repeat center center/cover;
 }
-
+@media(max-width:1250px){
+    .hero{
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
 .hero h1 {
     font-size: 48px;
     font-weight: bold;
@@ -41,11 +47,10 @@ body{
     color: #ddd;
 }
 
-/* === BUTTONS WITH ANIMATION === */
 .buy-btn,
 .show-more,
 .btn {
-    background: #e50914;
+    background: linear-gradient(to right, #ff0000, #660000);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -63,7 +68,7 @@ body{
 .buy-btn:hover,
 .show-more:hover,
 .btn:hover {
-    background: #f40612;
+    background: linear-gradient(to right, #ff4d4d, #990000);
     box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
     transform: translateY(-3px) scale(1.03);
 }
@@ -98,9 +103,7 @@ body{
     font-weight: bold;
     margin-bottom: 25px;
     margin-left: 20px;
-    /* gives spacing from the left */
     text-align: left;
-    /* heading stays aligned left */
 }
 
 .trailer-video {
@@ -112,7 +115,6 @@ body{
     width: 80%;
     max-width: 900px;
     height: 500px;
-    /* keeps good height */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     flex-wrap: wrap;

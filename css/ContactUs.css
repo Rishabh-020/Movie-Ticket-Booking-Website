@@ -46,9 +46,7 @@
      background-color: black;
      padding: 50px 150px;
      gap: 40px;
-     /* Adds space between form and info */
      align-items: center;
-     /* FIX: Vertically align both columns */
  }
 
  .form-page {

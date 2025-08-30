@@ -32,6 +32,7 @@ header.scrolled {
 .logo {
     font-size: 24px;
     font-weight: bold;
+    color: white;
 }
 
 .logo span {
@@ -75,7 +76,8 @@ header.scrolled {
 .login-btn {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #e50914;
+    /* background-color: #e50914; */
+    background: linear-gradient(to right, #ff0000, #660000);
     border: none;
     color: white;
     cursor: pointer;
@@ -89,20 +91,73 @@ header.scrolled {
     transform: translateY(-2px);
 }
 
+/* Hamburger (hidden by default) */
+.hamburger {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        overflow: hidden;
+
+        /* Smooth animation */
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+
+    .nav-links.show {
+        max-height: 500px;
+        background-color:rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(8px);
+        opacity: 1;
+        transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    }
+    .nav-links.show.scrolled {
+        background-color: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(12px);
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-actions {
+        display: none;
+    }
+    .mobile-login {
+        display: block;
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-login {
+        display: none;
+    }
+}
 /* Footer Code */
-/* --- Footer Styles --- */
 footer {
     background: linear-gradient(to top, #000000, #111111);
     color: #fff;
     padding: 50px 10%;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    /* FIX: Set a 2:1 ratio for columns */
     gap: 60px;
-    /* FIX: Increased gap */
     border-top: 2px solid rgba(255, 0, 0, 0.4);
     align-items: start;
-    /* FIX: Align items to the top */
 }
 
 footer h2,
@@ -147,31 +202,22 @@ footer .bottom-text {
     padding-top: 20px;
 }
 
-/* === Media Queries for Responsiveness === */
-
-/* For smaller desktops and large tablets */
 @media (max-width: 1200px) {
     .container {
         padding: 40px;
         gap: 40px;
     }
 }
-
-/* For most tablets */
 @media (max-width: 992px) {
     .container {
         flex-direction: column;
-        /* Stack the form and info vertically */
         padding: 40px 30px;
-        /* Adjusted padding */
         align-items: stretch;
-        /* Unset alignment for stacked view */
     }
 
     .form-page,
     .information {
         width: 100%;
-        /* Make each section take the full width */
     }
 
     .information {
@@ -186,7 +232,6 @@ footer .bottom-text {
 
     footer {
         grid-template-columns: 1fr;
-        /* Stack footer columns */
     }
 }
 
@@ -210,18 +255,16 @@ footer .bottom-text {
 
     .iconinfo {
         grid-template-columns: 1fr;
-        /* Display icons in a single column */
         gap: 25px;
     }
 
     .icon {
         flex-direction: column;
-        /* Stack icon and text vertically */
         text-align: center;
         gap: 8px;
     }
 
-    /* Footer mobile styles */
+    /* Footer for mobile */
     footer {
         padding: 40px 20px;
         text-align: center;

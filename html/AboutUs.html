@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us - CineVerse</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="/CSS/headerFooter.css" />
     <link rel="stylesheet" href="/CSS/AboutUs.css" />
   </head>
@@ -15,14 +19,27 @@
     <header>
       <nav class="navbar">
         <div class="logo">Cine<span>Book</span></div>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
+        <div class="hamburger" id="hamburger">☰</div>
+        <ul class="nav-links" id="nav-links">
+          <li class="homebtn" id="homepage">
+            <a href="index.html" style="color: red">Home</a>
+          </li>
           <li><a href="movie.html">Movies</a></li>
-          <li><a href="aboutus.html" style="color: red;">About</a></li>
+          <li><a href="AboutUs.html">About</a></li>
           <li><a href="ContactUs.html">Contact Us</a></li>
+          <li class="mobile-login">
+            <button
+              onclick="window.location.href='login.html'"
+              class="login-btn"
+            >
+              Login
+            </button>
+          </li>
         </ul>
         <div class="nav-actions">
-          <button class="login-btn" onclick="window.location.href='Login.html'">Login</button>
+          <button onclick="window.location.href='login.html'" class="login-btn">
+            Login
+          </button>
         </div>
       </nav>
     </header>
@@ -63,15 +80,15 @@
             src="https://randomuser.me/api/portraits/men/75.jpg"
             alt="Team Member"
           />
-          <h3>Rahul Sharma</h3>
-          <p>Founder & CEO</p>
+          <h3>Rishabh Aggarwal</h3>
+          <p>Lead & Developer</p>
         </div>
         <div class="member">
           <img
             src="https://randomuser.me/api/portraits/women/65.jpg"
             alt="Team Member"
           />
-          <h3>Priya Singh</h3>
+          <h3>Rhythm</h3>
           <p>Creative Director</p>
         </div>
         <div class="member">
@@ -79,38 +96,44 @@
             src="https://randomuser.me/api/portraits/men/32.jpg"
             alt="Team Member"
           />
-          <h3>Amit Verma</h3>
-          <p>Lead Developer</p>
+          <h3>Rishi</h3>
+          <p>Developer</p>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div>
-            <h2><span style="color:white;">Cine</span><span style="color:#e50914;">Book</span></h2>
-            <p>Welcome to <strong>CineFusion</strong>, your go-to platform for discovering and booking the latest movies
-                with ease.We combine sleek design, smooth functionality, and a user-friendly interface to give you the
-                best movie ticket booking experience.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
+      <div>
+        <h2>
+          <span style="color: white">Cine</span
+          ><span style="color: #e50914">Book</span>
+        </h2>
+        <p>
+          Welcome to <strong>CineBook</strong>, your go-to platform for
+          discovering and booking the latest movies with ease.We combine sleek
+          design, smooth functionality, and a user-friendly interface to give
+          you the best movie ticket booking experience.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
+      </div>
 
-        <div class="footer-contact">
-            <h3>GetIn<span style="color: #e50914;">Touch</span></h3>
-            <p><i class="fas fa-envelope"></i> rishabh98@gmail.com</p>
-            <p><i class="fas fa-envelope"></i> rhythm26@gmail.com</p>
-            <p><i class="fas fa-envelope"></i> rishi78@gmail.com</p>
-        </div>
+      <div class="footer-contact">
+        <h3>GetIn<span style="color: #e50914">Touch</span></h3>
+        <p><i class="fas fa-envelope"></i> rishabh98@gmail.com</p>
+        <p><i class="fas fa-envelope"></i> rhythm26@gmail.com</p>
+        <p><i class="fas fa-envelope"></i> rishi78@gmail.com</p>
+      </div>
 
-        <div class="bottom-text">
-            <p>Copyright 2025 © CineFusion. All Rights Reserved.</p>
-        </div>
-    </footer> 
-    
+      <div class="bottom-text">
+        <p>Copyright 2025 © CineBook. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script src="/JS/ManBurg.js"></script>
   </body>
 </html>

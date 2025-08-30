@@ -1,112 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../CSS/ContactUs.css">
-    <link rel="stylesheet" href="../CSS/headerFooter.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../CSS/ContactUs.css" />
+    <link rel="stylesheet" href="../CSS/headerFooter.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+  </head>
+  <body>
     <!-- Header -->
     <header>
-    <nav class="navbar">
+      <nav class="navbar">
         <div class="logo">Cine<span>Book</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="movie.html">Movies</a></li>
-            <li><a href="aboutus.html">About</a></li>
-            <li><a href="ContactUs.html" style="color: red;">Contact Us</a></li>
+        <div class="hamburger" id="hamburger">☰</div>
+        <ul class="nav-links" id="nav-links">
+          <li class="homebtn" id="homepage">
+            <a href="index.html" style="color: red">Home</a>
+          </li>
+          <li><a href="movie.html">Movies</a></li>
+          <li><a href="AboutUs.html">About</a></li>
+          <li><a href="ContactUs.html">Contact Us</a></li>
+          <li class="mobile-login">
+            <button
+              onclick="window.location.href='login.html'"
+              class="login-btn"
+            >
+              Login
+            </button>
+          </li>
         </ul>
         <div class="nav-actions">
-           <button class="login-btn" onclick="window.location.href='Login.html'">Login</button>
+          <button onclick="window.location.href='login.html'" class="login-btn">
+            Login
+          </button>
         </div>
-    </nav>
+      </nav>
     </header>
     <!-- Main -->
-     <div class="heading">
-        <h2 class="headingtxt">Contact Us</h2>
-     </div>
-     <div class="container">
-        <div class="form-page">
-            <form action="">
-                <h2>Contact Us</h2>
-                <h1 style="margin-top:10px;">Get In Touch</h1><br><br>
-                Name <br>
-                <input type="text" name="name" class="form-input" placeholder="Your Name..." required><br>
-                Email <br>
-                <input type="email" name="email" class="form-input" placeholder="example@gmail.com" required><br>
-                Subject <br>
-                <input type="text" name="subject" class="form-input" placeholder="Title..." required><br>
-                Message <br>
-                <textarea name="message" id="textarea" placeholder="Type Here..." required></textarea><br>
-                <button type="submit" id="subbtn">Send Now</button>
-            </form>
+    <div class="heading">
+      <h2 class="headingtxt">Contact Us</h2>
+    </div>
+    <div class="container">
+      <div class="form-page">
+        <form action="">
+          <h2>Contact Us</h2>
+          <h1 style="margin-top: 10px">Get In Touch</h1>
+          <br /><br />
+          Name <br />
+          <input
+            type="text"
+            name="name"
+            class="form-input"
+            placeholder="Your Name..."
+            required
+          /><br />
+          Email <br />
+          <input
+            type="email"
+            name="email"
+            class="form-input"
+            placeholder="example@gmail.com"
+            required
+          /><br />
+          Subject <br />
+          <input
+            type="text"
+            name="subject"
+            class="form-input"
+            placeholder="Title..."
+            required
+          /><br />
+          Message <br />
+          <textarea
+            name="message"
+            id="textarea"
+            placeholder="Type Here..."
+            required
+          ></textarea
+          ><br />
+          <button type="submit" id="subbtn">Send Now</button>
+        </form>
+      </div>
+      <div class="information">
+        <div class="note">
+          <p>
+            We are always with you to improve your experience with our website.
+          </p>
         </div>
-        <div class="information">
-            <div class="note">
-                <p>We are always with you to improve your experience with our website.</p>
-            </div>
-            <div class="iconinfo">
-                <div class="icon">
-                    <span class="material-symbols-outlined">phone_in_talk</span>
-                    <p>Phone Number <br> +91- 98765 43210</p>
-                </div>
-                <div class="icon">
-                    <span class="material-symbols-outlined">mail</span>
-                    <p>Email Address <br> contact@example.com</p>
-                </div>
-                <div class="icon">
-                    <span class="material-symbols-outlined">person</span>
-                    <p>Contact Person <br> Alex Doe</p>
-                </div>
-                <div class="icon">
-                    <span class="material-symbols-outlined">location_on</span>
-                    <p>Our Location <br> 22, Sector-B, Noida</p>
-                </div>
-            </div>
-            <div class="map">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5453743.038887993!2d72.3489178308358!3d31.00356813607479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964aa9af2df0f%3A0xf435a44d54c4b72f!2sPunjab!5e0!3m2!1sen!2sin!4v1692109300000!5m2!1sen!2sin" 
-                    width="100%" 
-                    height="300" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
+        <div class="iconinfo">
+          <div class="icon">
+            <span class="material-symbols-outlined">phone_in_talk</span>
+            <p>
+              Phone Number <br />
+              +91- 98765 43210
+            </p>
+          </div>
+          <div class="icon">
+            <span class="material-symbols-outlined">mail</span>
+            <p>
+              Email Address <br />
+              contact@example.com
+            </p>
+          </div>
+          <div class="icon">
+            <span class="material-symbols-outlined">person</span>
+            <p>
+              Contact Person <br />
+              Alex Doe
+            </p>
+          </div>
+          <div class="icon">
+            <span class="material-symbols-outlined">location_on</span>
+            <p>
+              Our Location <br />
+              22, Sector-B, Noida
+            </p>
+          </div>
         </div>
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5453743.038887993!2d72.3489178308358!3d31.00356813607479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964aa9af2df0f%3A0xf435a44d54c4b72f!2sPunjab!5e0!3m2!1sen!2sin!4v1692109300000!5m2!1sen!2sin"
+            width="100%"
+            height="300"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+        </div>
+      </div>
     </div>
     <!-- Footer -->
-     <footer>
-        <div>
-            <h2><span style="color:white;">Cine</span><span style="color:#e50914;">Book</span></h2>
-            <p>Welcome to <strong>CineFusion</strong>, your go-to platform for discovering and booking the latest movies
-                with ease.We combine sleek design, smooth functionality, and a user-friendly interface to give you the
-                best movie ticket booking experience.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
+    <footer>
+      <div>
+        <h2>
+          <span style="color: white">Cine</span
+          ><span style="color: #e50914">Book</span>
+        </h2>
+        <p>
+          Welcome to <strong>CineBook</strong>, your go-to platform for
+          discovering and booking the latest movies with ease.We combine sleek
+          design, smooth functionality, and a user-friendly interface to give
+          you the best movie ticket booking experience.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
+      </div>
 
-        <div class="footer-contact">
-            <h3>GetIn<span style="color: #e50914;">Touch</span></h3>
-            <p style="margin-bottom: 10px;"><i class="fas fa-envelope"></i> rishabh98@gmail.com</p>
-            <p style="margin-bottom: 10px;"><i class="fas fa-envelope"></i> rhythm26@gmail.com</p>
-            <p><i class="fas fa-envelope"></i> rishi78@gmail.com</p>
-        </div>
+      <div class="footer-contact">
+        <h3>GetIn<span style="color: #e50914">Touch</span></h3>
+        <p style="margin-bottom: 10px">
+          <i class="fas fa-envelope"></i> rishabh98@gmail.com
+        </p>
+        <p style="margin-bottom: 10px">
+          <i class="fas fa-envelope"></i> rhythm26@gmail.com
+        </p>
+        <p><i class="fas fa-envelope"></i> rishi78@gmail.com</p>
+      </div>
 
-        <div class="bottom-text">
-            <p>Copyright 2025 © CineFusion. All Rights Reserved.</p>
-        </div>
+      <div class="bottom-text">
+        <p>Copyright 2025 © CineBook. All Rights Reserved.</p>
+      </div>
     </footer>
-</body>
+    <script src="/JS/ManBurg.js"></script>
+  </body>
 </html>
