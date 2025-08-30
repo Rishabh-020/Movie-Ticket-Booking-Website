@@ -90,15 +90,19 @@ header.scrolled {
 }
 
 /* Footer Code */
-
+/* --- Footer Styles --- */
 footer {
     background: linear-gradient(to top, #000000, #111111);
     color: #fff;
     padding: 50px 10%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 2fr 1fr;
+    /* FIX: Set a 2:1 ratio for columns */
+    gap: 60px;
+    /* FIX: Increased gap */
     border-top: 2px solid rgba(255, 0, 0, 0.4);
+    align-items: start;
+    /* FIX: Align items to the top */
 }
 
 footer h2,
@@ -113,27 +117,6 @@ footer p {
     font-size: 14px;
     line-height: 1.6;
     color: #ccc;
-}
-
-footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-footer ul li {
-    margin-bottom: 12px;
-}
-
-footer ul li a {
-    color: #bbb;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-footer ul li a:hover {
-    color: #e50914;
-    /* Netflix-style red hover */
 }
 
 footer .social-icons {
@@ -154,7 +137,8 @@ footer .social-icons a:hover {
 }
 
 footer .bottom-text {
-    grid-column: 1 / span 3;
+    grid-column: 1 / -1;
+    /* Span full width */
     text-align: center;
     font-size: 12px;
     color: #666;
@@ -163,8 +147,87 @@ footer .bottom-text {
     padding-top: 20px;
 }
 
-.footer-contact {
-    flex: 1;
-    min-width: 200px;
-    margin-left: 200px;
+/* === Media Queries for Responsiveness === */
+
+/* For smaller desktops and large tablets */
+@media (max-width: 1200px) {
+    .container {
+        padding: 40px;
+        gap: 40px;
+    }
+}
+
+/* For most tablets */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+        /* Stack the form and info vertically */
+        padding: 40px 30px;
+        /* Adjusted padding */
+        align-items: stretch;
+        /* Unset alignment for stacked view */
+    }
+
+    .form-page,
+    .information {
+        width: 100%;
+        /* Make each section take the full width */
+    }
+
+    .information {
+        padding: 40px 0 0 0;
+        text-align: center;
+    }
+
+    .iconinfo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+        /* Stack footer columns */
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 576px) {
+    .container {
+        padding: 30px 15px;
+    }
+
+    .form-page {
+        padding: 25px 20px;
+    }
+
+    .form-page h1 {
+        font-size: 1.8rem;
+    }
+
+    .form-page h2 {
+        font-size: 1rem;
+    }
+
+    .iconinfo {
+        grid-template-columns: 1fr;
+        /* Display icons in a single column */
+        gap: 25px;
+    }
+
+    .icon {
+        flex-direction: column;
+        /* Stack icon and text vertically */
+        text-align: center;
+        gap: 8px;
+    }
+
+    /* Footer mobile styles */
+    footer {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
 }

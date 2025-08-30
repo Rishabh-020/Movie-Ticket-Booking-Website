@@ -163,6 +163,10 @@
  #subbtn:hover {
      background-color: #6a6a6a;
  }
+footer .social-icons a:hover {
+    color: #e50914;
+    transform: scale(1.2);
+}
 
  @media (max-width: 1200px) {
      .container {
