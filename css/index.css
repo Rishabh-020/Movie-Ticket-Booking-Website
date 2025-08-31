@@ -24,6 +24,8 @@ body{
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
+        height: 5px;
+        margin: 0px;
     }
 }
 .hero h1 {
@@ -51,6 +53,7 @@ body{
 .show-more,
 .btn {
     background: linear-gradient(to right, #ff0000, #660000);
+    text-decoration: none;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -128,10 +131,11 @@ body{
 }
 
 .movies-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
-    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
 }
 
 .movie-card {
