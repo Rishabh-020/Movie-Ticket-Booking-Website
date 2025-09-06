@@ -22,3 +22,20 @@ registerBtn.addEventListener("click",function(){
     registerFrom.style.opacity=1;  
      document.querySelector(".col-1").style.borderRadius="0 20% 20% 0";  
 })
+
+//Exsisting user JS
+Submit.addEventListener("click",()=>{
+    let user=document.getElementById("Username").value;
+    let pass=document.getElementById("Password").value;
+    if(user==="Admin001" && pass==="12"){
+        alert("Valid User");
+        window.location.href = "index.html";
+    }else{
+        alert("Unautharized Acess");
+    }
+})
+
+//New User JS
+SignSubmit.addEventListener("click",()=>{
+
+})
