@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickShow • Movie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0e0f13;
+            --bg-elev: #17181f;
+            --text: #e8e8ee;
+            --muted: #a7a8b4;
+            --primary: #ff5a67;
+            --primary-700: #e14b58;
+            --accent: #223;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background:
+                radial-gradient(900px 500px at 12% 0%, rgba(255, 90, 103, .06), transparent 60%),
+                radial-gradient(900px 500px at 88% -10%, rgba(123, 97, 255, .06), transparent 60%),
+                linear-gradient(180deg, #101116, #0b0c10);
+            color: var(--text);
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial
+        }
+
+        .topbar {
+            width: 100%;
+            margin: 0;
+            padding: 14px 32px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 16px;
+            background: linear-gradient(90deg, rgba(10, 10, 10, .95), rgba(10, 10, 10, .65), rgba(10, 10, 10, .95));
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .brand {
+            display: flex;
+            align-items: center
+        }
+
+        .brand-text {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: .3px
+        }
+
+        .brand-accent {
+            color: #e21
+        }
+
+        .nav {
+            display: flex;
+            gap: 36px;
+            justify-self: center
+        }
+
+        .nav-link {
+            color: var(--text);
+            opacity: .85;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 4px 0;
+            border-radius: 6px;
+            transition: color .2s ease;
+            position: relative
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            height: 3px;
+            width: 36px;
+            background: #c20000;
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .22s ease
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+            color: #c20000
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1)
+        }
+
+        .nav-link.active {
+            opacity: 1;
+            color: #c20000
+        }
+
+        .nav-link.active::after {
+            transform: scaleX(1)
+        }
+
+        .actions {
+            justify-self: end
+        }
+
+        .login-btn {
+            background: linear-gradient(180deg, #ff1d1d, #a90404);
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(255, 0, 0, .25)
+        }
+
+        .login-btn:hover {
+            filter: brightness(1.05)
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 48px;
+            align-items: center;
+            padding: 24px;
+            background:
+                radial-gradient(800px 400px at 15% 0%, rgba(255, 90, 103, .08), transparent 60%),
+                radial-gradient(800px 400px at 85% -10%, rgba(123, 97, 255, .08), transparent 60%),
+                linear-gradient(180deg, #101116, #0b0c10);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 24px
+        }
+
+        .poster {
+            width: 100%;
+            max-width: 380px;
+            height: 420px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .55);
+            background: rgba(255, 255, 255, .04)
+        }
+
+        .poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        .details .lang {
+            color: #ff8c9a;
+            font-weight: 700;
+            letter-spacing: .2em;
+            font-size: 12px;
+            margin-bottom: 10px
+        }
+
+        .title {
+            font-size: 48px;
+            margin: 0 0 8px 0
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        .star {
+            color: #ff5a67;
+            font-size: 18px
+        }
+
+        .synopsis {
+            color: var(--muted);
+            max-width: 720px;
+            line-height: 1.6;
+            margin: 18px 0
+        }
+
+        .meta {
+            color: #cfd0d8;
+            margin: 18px 0
+        }
+
+        .cta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 10px
+        }
+
+        .btn {
+            padding: 14px 22px;
+            border: none;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 10px 24px rgba(255, 90, 103, .35)
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-700)
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, .06);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, .08)
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, .1)
+        }
+
+        .heart {
+            font-size: 18px;
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, color .2s ease
+        }
+
+        .heart:hover {
+            border-color: #ffffff
+        }
+
+        .heart[aria-pressed="true"] {
+            background: #ff5a67;
+            border-color: #ff5a67;
+            color: #ffffff;
+            box-shadow: 0 10px 24px rgba(255, 90, 103, .35)
+        }
+
+        @media (max-width: 920px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 24px
+            }
+
+            .title {
+                font-size: 36px
+            }
+        }
+
+
+        /* Date card */
+        .date-card {
+            max-width: 1200px;
+            margin: 20px auto 0;
+            padding: 0 8px
+        }
+
+        .date-card__inner {
+            display: grid;
+            grid-template-columns: auto 40px auto 40px 1fr auto;
+            align-items: center;
+            gap: 10px;
+            padding: 24px;
+            background: linear-gradient(180deg, rgba(255, 90, 103, .08), rgba(255, 90, 103, .05));
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .35)
+        }
+
+        .date-card__title {
+            margin: 0 18px 0 12px;
+            font-size: 16px;
+            color: #f0f0f5
+        }
+
+        .date-card__nav {
+            display: flex;
+            justify-content: center;
+            align-self: center
+        }
+
+        .icon-btn.small {
+            width: 40px;
+            height: 40px;
+            font-size: 14px;
+            line-height: 1;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .04));
+            border: 1px solid rgba(255, 255, 255, .12);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, .25);
+            color: #e8e8ee
+        }
+
+        .icon-btn.small:hover {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .06))
+        }
+
+        .icon-btn.small:disabled {
+            opacity: .45;
+            pointer-events: none
+        }
+
+        .date-card__days {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 0 10px
+        }
+
+        .day {
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .08);
+            color: #e8e8ee;
+            border-radius: 10px;
+            padding: 10px 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer
+        }
+
+        .day .d {
+            font-weight: 700
+        }
+
+        .day .m {
+            font-size: 12px;
+            color: #c9c9d2
+        }
+
+        .day.active {
+            background: #ff5a67;
+            color: #fff;
+            border-color: #ff5a67;
+            box-shadow: 0 10px 24px rgba(255, 90, 103, .35)
+        }
+
+        .date-card__cta {
+            justify-self: end
+        }
+
+        /* Recs */
+        .recs {
+            max-width: 1200px;
+            margin: 26px auto 60px;
+            padding: 0 8px
+        }
+
+        .recs__title {
+            margin: 22px 12px;
+            font-size: 18px;
+            color: #e9e9f0
+        }
+
+        .recs__row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px
+        }
+
+        .card {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, .4);
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform .25s ease
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, .5), 0 0 0 1px rgba(255, 90, 103, .12) inset;
+            border-color: rgba(255, 255, 255, .12)
+        }
+
+        .card:hover img {
+            transform: scale(1.05)
+        }
+
+        .card__meta {
+            padding: 12px
+        }
+
+        .card__title {
+            font-weight: 700;
+            margin-bottom: 6px
+        }
+
+        .card__sub {
+            color: #aeb0bb;
+            font-size: 12px
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            background: #000000;
+            color: #ffffff;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial
+        }
+
+        .footer__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 20px
+        }
+
+        .footer__content {
+            display: grid;
+            grid-template-columns: 1fr 0.8fr;
+            gap: 60px;
+            margin-bottom: 30px
+        }
+
+        .footer__left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px
+        }
+
+        .footer__brand {
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: .3px
+        }
+
+        .footer__brand .brand-accent {
+            color: #ff0000
+        }
+
+        .footer__description {
+            color: #ffffff;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 14px
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            color: #bbb;
+            font-size: 20px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-icon {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: opacity .2s ease;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px
+        }
+
+        .social-icon:hover {
+            opacity: .8
+        }
+
+        .social-icon.facebook {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 900
+        }
+
+        .social-icon.twitter {
+            font-size: 16px
+        }
+
+        .social-icon.instagram {
+            font-size: 16px
+        }
+
+        .social-icon.youtube {
+            font-family: Arial, sans-serif;
+            font-size: 14px
+        }
+
+        .footer__right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px
+        }
+
+        .footer__contact-title {
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: .3px
+        }
+
+        .footer__contact-title .brand-accent {
+            color: #ff0000
+        }
+
+        .footer__emails {
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .email-item {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .email-icon {
+            color: #ffffff;
+            font-size: 16px
+        }
+
+        .email-address {
+            color: #ffffff;
+            font-size: 14px
+        }
+
+        .footer__separator {
+            height: 1px;
+            background: #d3d3d3;
+            margin: 20px 0
+        }
+
+        .footer__copy {
+            color: #ffffff;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px
+        }
+
+        .footer__social a,
+        .footer__social i {
+            color: #fff !important;
+            transition: color 0.25s ease-out;
+        }
+
+        .footer__social a:hover,
+        .footer__social i:hover {
+            color: #ff0000 !important;
+        }
+
+        /* ...existing code... */
+
+        /* Button hover animations */
+        .btn,
+        .login-btn,
+        .icon-btn,
+        .date-card__cta {
+            transition:
+                background 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn:hover,
+        .login-btn:hover,
+        .icon-btn:hover,
+        .date-card__cta:hover {
+            background: var(--primary-700) !important;
+            color: #fff !important;
+            box-shadow: 0 6px 24px rgba(255, 90, 103, 0.22);
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, .13) !important;
+            color: #fff !important;
+        }
+
+        .icon-btn.heart:hover,
+        .icon-btn.heart[aria-pressed="true"]:hover {
+            background: #ff5a67 !important;
+            color: #fff !important;
+            border-color: #ff5a67 !important;
+            box-shadow: 0 10px 24px rgba(255, 90, 103, .35);
+            transform: scale(1.08);
+        }
+
+        .btn:active,
+        .login-btn:active,
+        .icon-btn:active,
+        .date-card__cta:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 8px rgba(255, 90, 103, 0.12);
+        }
+
+        #show-more-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(255, 90, 103, 0.18);
+            transition:
+                background 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+            margin: 0 auto;
+            display: inline-block;
+        }
+
+        #show-more-btn:hover {
+            background: var(--primary-700) !important;
+            color: #fff !important;
+            box-shadow: 0 6px 24px rgba(255, 90, 103, 0.22);
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        #show-more-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 8px rgba(255, 90, 103, 0.12);
+        }
+
+        @media (max-width: 700px) {
+            #show-more-btn {
+                width: 100%;
+                font-size: 15px;
+                padding: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #show-more-btn {
+                font-size: 13px;
+                padding: 8px 0;
+            }
+        }
+
+        @media (max-width: 1200px) {
+
+            .hero,
+            .recs__row,
+            .footer__inner {
+                max-width: 100%;
+            }
+
+            .footer__inner {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+
+        @media (max-width: 920px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 16px;
+            }
+
+            .poster {
+                max-width: 100%;
+                height: 320px;
+            }
+
+            .title {
+                font-size: 32px;
+            }
+
+            .recs__row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .footer__content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                grid-template-columns: 1fr auto;
+                padding: 10px 12px;
+                gap: 8px;
+            }
+
+            .nav {
+                gap: 18px;
+                font-size: 15px;
+            }
+
+            .brand-text {
+                font-size: 18px;
+            }
+
+            .login-btn {
+                padding: 8px 12px;
+                font-size: 15px;
+            }
+
+            .hero {
+                padding: 8px;
+                margin: 20px auto;
+            }
+
+            .poster {
+                height: 220px;
+            }
+
+            .title {
+                font-size: 24px;
+            }
+
+            .synopsis {
+                font-size: 14px;
+            }
+
+            .meta {
+                font-size: 13px;
+            }
+
+            .cta .btn,
+            .cta .icon-btn {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+
+            .date-card__inner {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 14px;
+            }
+
+            .date-card__days {
+                gap: 4px;
+            }
+
+            .day {
+                padding: 7px 8px;
+                font-size: 13px;
+            }
+
+            .recs__row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .card img {
+                height: 140px;
+            }
+
+            .footer__inner {
+                padding: 24px 6px 12px;
+            }
+
+            .footer__brand,
+            .footer__contact-title {
+                font-size: 18px;
+            }
+
+            .footer__description,
+            .footer__copy {
+                font-size: 12px;
+            }
+
+            .footer__emails {
+                gap: 6px;
+            }
+
+            .footer__separator {
+                margin: 10px 0;
+            }
+
+            .footer__social {
+                gap: 12px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .topbar {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+                padding: 8px 4px;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                gap: 10px;
+                font-size: 13px;
+            }
+
+            .brand-text {
+                font-size: 15px;
+            }
+
+            .hero {
+                margin: 10px auto;
+                padding: 4px;
+            }
+
+            .poster {
+                height: 120px;
+            }
+
+            .title {
+                font-size: 16px;
+            }
+
+            .footer__brand,
+            .footer__contact-title {
+                font-size: 15px;
+            }
+
+            .footer__description,
+            .footer__copy {
+                font-size: 10px;
+            }
+
+            .footer__social {
+                font-size: 15px;
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 920px) {
+            .date-card__inner {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 14px;
+                justify-items: stretch;
+            }
+
+            .date-card__title {
+                margin: 0 0 10px 0;
+                text-align: left;
+            }
+
+            .date-card__nav {
+                justify-content: flex-start;
+                margin: 0;
+            }
+
+            .date-card__days {
+                gap: 4px;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+
+            .day {
+                padding: 8px 10px;
+                font-size: 14px;
+                min-width: 48px;
+            }
+
+            .date-card__cta {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .date-card__inner {
+                padding: 10px;
+            }
+
+            .date-card__title {
+                font-size: 15px;
+            }
+
+            .day {
+                font-size: 13px;
+                padding: 7px 8px;
+                min-width: 40px;
+            }
+
+            .date-card__cta {
+                font-size: 14px;
+                padding: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .date-card__inner {
+                padding: 6px;
+            }
+
+            .date-card__title {
+                font-size: 13px;
+            }
+
+            .day {
+                font-size: 12px;
+                padding: 6px 6px;
+                min-width: 32px;
+            }
+
+            .date-card__cta {
+                font-size: 12px;
+                padding: 8px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-text">Cine<span class="brand-accent">Book</span></span>
+        </div>
+        <nav class="nav">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="#">Movies</a>
+            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#">Contact Us</a>
+        </nav>
+        <div class="actions">
+            <button class="login-btn">Login</button>
+        </div>
+    </header>
+
+    <main class="hero">
+        <div class="poster">
+            <img src="https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2022/11/last-of-us-tv-1.png?ssl=1"
+                alt="The Last Of Us poster">
+        </div>
+        <section class="details">
+            <div class="lang">ENGLISH</div>
+            <h1 class="title">The Last Of Us</h1>
+            <div class="rating">
+                <span class="star">★</span>
+                <span>8.2 User Rating</span>
+            </div>
+            <p class="synopsis">The story follows a hardened smuggler named Joel who is tasked with escorting a
+                14-year-old girl, Ellie, across a post-apocalyptic United States</p>
+            <div class="meta">1h 48m • Family, Comedy, Science Fiction • 2025</div>
+            <div class="cta">
+                <button class="btn btn-secondary">▷ Watch Trailer</button>
+                <a href="#date-card"><button class="btn btn-primary">Buy Tickets</button></a>
+                <button class="icon-btn heart" aria-pressed="false" aria-label="Favorite">♡</button>
+            </div>
+        </section>
+    </main>
+
+    <section class="date-card" id="date-card">
+        <div class="date-card__inner">
+            <h3 class="date-card__title">Choose Date</h3>
+            <div class="date-card__nav">
+                <button class="icon-btn small" aria-label="Prev">◀</button>
+            </div>
+            <div class="date-card__days">
+                <button class="day"><span class="d">24</span><span class="m">Sep</span></button>
+                <button class="day"><span class="d">25</span><span class="m">Sep</span></button>
+                <button class="day active"><span class="d">26</span><span class="m">Sep</span></button>
+                <button class="day"><span class="d">27</span><span class="m">Sep</span></button>
+            </div>
+            <div class="date-card__nav">
+                <button class="icon-btn small" aria-label="Next">▶</button>
+            </div>
+            <button class="btn btn-primary date-card__cta">Book Now</button>
+        </div>
+    </section>
+
+    <section class="recs">
+        <h3 class="recs__title">You May Also Like</h3>
+        <div class="recs__row">
+            <article class="card">
+                <img src="https://m.media-amazon.com/images/I/71RrfxJosrL._UF894,1000_QL80_.jpg"
+                    alt="In the Lost Lands" />
+                <div class="card__meta">
+                    <div class="card__title">FORD V FERRARI</div>
+                    <div class="card__sub">2019 • Action | Racing • 2h 32m</div>
+                </div>
+            </article>
+            <article class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2PAheQ-bqFfkOMauLl1R5VVFQykDMJki8EQ&s"
+                    alt="Until Dawn" />
+                <div class="card__meta">
+                    <div class="card__title">The Wolf of Wallstreet</div>
+                    <div class="card__sub">2013 • Thriller | Action • 1h 43m</div>
+                </div>
+            </article>
+            <article class="card">
+                <img src="data:image/jpeg;base64,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"
+                    alt="Lilo & Stitch" />
+                <div class="card__meta">
+                    <div class="card__title">Inception</div>
+                    <div class="card__sub">2015 • Thriller | Action • 2h 1m</div>
+                </div>
+            </article>
+            <article class="card">
+                <img src="data:image/jpeg;base64,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"
+                    alt="Havoc" />
+                <div class="card__meta">
+                    <div class="card__title">Dune</div>
+                    <div class="card__sub">2021 • Action | Science • 2h 47m</div>
+                </div>
+            </article>
+        </div>
+        </div>
+        <div style="text-align:center; margin-top: 24px;">
+            <button id="show-more-btn" style="
+                background: var(--primary);
+                color: #fff;
+                border: none;
+                padding: 12px 32px;
+                border-radius: 10px;
+                font-weight: 700;
+                font-size: 16px;
+                cursor: pointer;
+                box-shadow: 0 4px 16px rgba(255,90,103,0.18);
+                transition: background 0.2s;
+            ">Show More</button>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__content">
+                <div class="footer__left">
+                    <div class="footer__brand">Cine<span class="brand-accent">Book</span></div>
+                    <p class="footer__description">Welcome to CineBook, your go-to platform for discovering and booking
+                        the latest movies with ease. We combine sleek design, smooth functionality, and a user-friendly
+                        interface to give you the best movie ticket booking experience.</p>
+                    <div class="footer__social" style="color: #bbb;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer__right">
+                    <div class="footer__contact-title">GetIn <span class="brand-accent">Touch</span></div>
+                    <div class="footer__emails">
+                        <div class="email-item">
+                            <span class="email-icon">✉</span>
+                            <span class="email-address">rishabh98@gmail.com</span>
+                        </div>
+                        <div class="email-item">
+                            <span class="email-icon">✉</span>
+                            <span class="email-address">rhythm26@gmail.com</span>
+                        </div>
+                        <div class="email-item">
+                            <span class="email-icon">✉</span>
+                            <span class="email-address">rishi78@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__separator"></div>
+            <div class="footer__copy">Copyright 2025 © CineBook. All Rights Reserved.</div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.heart');
+            if (!btn) return;
+            const isOn = btn.getAttribute('aria-pressed') === 'true';
+            btn.setAttribute('aria-pressed', String(!isOn));
+            btn.textContent = isOn ? '♡' : '❤';
+        });
+
+        (() => {
+            const container = document.querySelector('.date-card');
+            if (!container) return;
+            const dayButtons = Array.from(container.querySelectorAll('.day'));
+            const navs = container.querySelectorAll('.date-card__nav .icon-btn.small');
+            const prevBtn = navs && navs.length ? navs[0] : null;
+            const nextBtn = navs && navs.length > 1 ? navs[1] : null;
+            const bookBtn = container.querySelector('.date-card__cta');
+
+            let activeIndex = Math.max(0, dayButtons.findIndex(b => b.classList.contains('active')));
+            if (activeIndex === -1) activeIndex = 0;
+
+            function labelFor(button) {
+                const d = button.querySelector('.d')?.textContent?.trim() ?? '';
+                const m = button.querySelector('.m')?.textContent?.trim() ?? '';
+                return `${d} ${m}`.trim();
+            }
+
+            function setActive(index) {
+                if (index < 0 || index >= dayButtons.length) return;
+                dayButtons.forEach((b, i) => {
+                    b.classList.toggle('active', i === index);
+                    b.setAttribute('aria-pressed', String(i === index));
+                });
+                activeIndex = index;
+            }
+
+            function getNumbers() {
+                return dayButtons.map(b => parseInt(b.querySelector('.d')?.textContent || '0', 10));
+            }
+
+            function setNumbers(nums) {
+                nums.forEach((num, i) => {
+                    const dEl = dayButtons[i].querySelector('.d');
+                    if (dEl) dEl.textContent = String(num);
+                });
+                updateArrowDisabled();
+            }
+
+            function updateArrowDisabled() {
+                const nums = getNumbers();
+                const min = Math.min(...nums);
+                const max = Math.max(...nums);
+                if (prevBtn) prevBtn.disabled = min === 1;
+                if (nextBtn) nextBtn.disabled = max === 30;
+            }
+
+            function shiftDates(delta) {
+                const nums = getNumbers();
+                const min = Math.min(...nums);
+                const max = Math.max(...nums);
+                if (delta > 0 && max >= 30) return; // can't go beyond 30
+                if (delta < 0 && min <= 1) return;  // can't go below 1
+                const shifted = nums.map(n => Math.max(1, Math.min(30, n + delta)));
+                setNumbers(shifted);
+            }
+
+            dayButtons.forEach((btn, i) => {
+                btn.addEventListener('click', () => setActive(i));
+                btn.addEventListener('keydown', (ev) => {
+                    if (ev.key === 'ArrowRight') { ev.preventDefault(); setActive(Math.min(dayButtons.length - 1, activeIndex + 1)); dayButtons[activeIndex].focus(); }
+                    if (ev.key === 'ArrowLeft') { ev.preventDefault(); setActive(Math.max(0, activeIndex - 1)); dayButtons[activeIndex].focus(); }
+                });
+            });
+
+            if (prevBtn) prevBtn.addEventListener('click', () => shiftDates(-1));
+            if (nextBtn) nextBtn.addEventListener('click', () => shiftDates(1));
+
+            if (bookBtn) bookBtn.addEventListener('click', () => {
+                const chosen = dayButtons[activeIndex] ? labelFor(dayButtons[activeIndex]) : '';
+                alert(`Booking for ${chosen}`);
+            });
+
+            dayButtons.forEach((b, i) => b.setAttribute('aria-pressed', String(i === activeIndex)));
+            updateArrowDisabled();
+        })();
+    </script>
+</body>
+
+</html>

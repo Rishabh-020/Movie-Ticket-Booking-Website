@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tickets - CineBook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #18181b; /* Lighter base color */
+            background-image:
+                radial-gradient(ellipse 80% 90% at 10% 50%, rgba(220, 38, 38, 0.2), transparent 70%), /* Increased opacity */
+                radial-gradient(ellipse 50% 60% at 90% 90%, rgba(220, 38, 38, 0.25), transparent 70%); /* Increased opacity */
+            background-attachment: fixed;
+        }
+        .ticket-card {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .ticket-card::before, .ticket-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #18181b;
+            transform: translateY(-50%);
+        }
+        .ticket-card::before { left: -16px; }
+        .ticket-card::after { right: -16px; }
+        .ticket-stub {
+             border-left: 2px dashed rgba(255, 255, 255, 0.2);
+        }
+        .gradient-text {
+            background-image: linear-gradient(to right, #d1d5db, #4b5563);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <div class="container mx-auto px-4 py-10">
+        <header class="flex items-center justify-between mb-10">
+            <h1 class="text-3xl font-bold gradient-text">My Booked Tickets</h1>
+            <a href="seatIcon.html" class="bg-gray-700 text-white font-bold py-2 px-5 rounded-lg hover:bg-gray-600 transition-colors duration-300 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+                </svg>
+                Book More
+            </a>
+        </header>
+
+        <main id="tickets-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- JavaScript will populate this area -->
+        </main>
+        
+        <div id="no-tickets-message" class="hidden text-center py-20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-16 w-16 text-gray-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5z" />
+            </svg>
+            <h2 class="text-2xl font-semibold text-white">No Tickets Found</h2>
+            <p class="text-gray-400 mt-2">Go back to the main page to book your first ticket.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ticketsContainer = document.getElementById('tickets-container');
+            const noTicketsMessage = document.getElementById('no-tickets-message');
+            
+            const myTickets = JSON.parse(localStorage.getItem('my_tickets')) || [];
+
+            if (myTickets.length === 0) {
+                noTicketsMessage.classList.remove('hidden');
+            } else {
+                myTickets.forEach(booking => {
+                    const ticketCard = `
+                        <div class="ticket-card rounded-xl flex">
+                            <div class="p-6 flex-grow">
+                                <p class="text-sm text-red-400 font-semibold">CineBook</p>
+                                <h3 class="text-xl font-bold mt-1 gradient-text">Movie Ticket</h3>
+                                <div class="mt-4 space-y-2 text-sm">
+                                    <p><span class="font-semibold text-gray-400">Date:</span> ${booking.date}</p>
+                                    <p><span class="font-semibold text-gray-400">Time:</span> ${booking.time}</p>
+                                </div>
+                            </div>
+                            <div class="p-6 ticket-stub flex-shrink-0 flex flex-col justify-center items-center w-32">
+                                <p class="text-xs text-gray-400 mb-1">SEATS</p>
+                                <p class="text-lg font-bold text-center gradient-text">${booking.seats.join(', ')}</p>
+                            </div>
+                        </div>
+                    `;
+                    ticketsContainer.innerHTML += ticketCard;
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+
