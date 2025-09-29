@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
         integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/headerFooter.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0e0f13;
@@ -944,19 +946,32 @@
 </head>
 
 <body>
-    <header class="topbar">
-        <div class="brand">
-            <span class="brand-text">Cine<span class="brand-accent">Book</span></span>
+    <header>
+      <nav class="navbar">
+        <div class="logo">Cine<span>Book</span></div>
+        <div class="hamburger" id="hamburger">☰</div>
+        <ul class="nav-links" id="nav-links">
+          <li class="homebtn" id="homepage">
+            <a href="index.html">Home</a>
+          </li>
+          <li><a href="movie.html">Movies</a></li>
+          <li><a href="AboutUs.html">About</a></li>
+          <li><a href="ContactUs.html">Contact Us</a></li>
+          <li class="mobile-login">
+            <button
+              onclick="window.location.href='login.html'"
+              class="login-btn"
+            >
+              Login
+            </button>
+          </li>
+        </ul>
+        <div class="nav-actions">
+          <button onclick="window.location.href='login.html'" class="login-btn">
+            Login
+          </button>
         </div>
-        <nav class="nav">
-            <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="#">Movies</a>
-            <a class="nav-link" href="#">About</a>
-            <a class="nav-link" href="#">Contact Us</a>
-        </nav>
-        <div class="actions">
-            <button class="login-btn">Login</button>
-        </div>
+      </nav>
     </header>
 
     <main class="hero">
@@ -976,7 +991,7 @@
             <div class="meta">1h 48m • Family, Comedy, Science Fiction • 2025</div>
             <div class="cta">
                 <button class="btn btn-secondary">▷ Watch Trailer</button>
-                <a href="#date-card"><button class="btn btn-primary">Buy Tickets</button></a>
+                <a href="seatIcon.html"><button class="btn btn-primary">Buy Tickets</button></a>
                 <button class="icon-btn heart" aria-pressed="false" aria-label="Favorite">♡</button>
             </div>
         </section>
