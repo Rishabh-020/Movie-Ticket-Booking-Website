@@ -7,51 +7,48 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #18181b; /* Lighter base color */
-            background-image:
-                radial-gradient(ellipse 80% 90% at 10% 50%, rgba(220, 38, 38, 0.2), transparent 70%), /* Increased opacity */
-                radial-gradient(ellipse 50% 60% at 90% 90%, rgba(220, 38, 38, 0.25), transparent 70%); /* Increased opacity */
-            background-attachment: fixed;
-        }
-        .ticket-card {
-            background: rgba(26, 26, 26, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        .ticket-card::before, .ticket-card::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: #18181b;
-            transform: translateY(-50%);
-        }
-        .ticket-card::before { left: -16px; }
-        .ticket-card::after { right: -16px; }
-        .ticket-stub {
-             border-left: 2px dashed rgba(255, 255, 255, 0.2);
-        }
-        .gradient-text {
-            background-image: linear-gradient(to right, #d1d5db, #4b5563);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-    </style>
+    <link rel="stylesheet" href="../CSS/ticket.css">
+    <link rel="stylesheet" href="../CSS/headerFooter.css">
 </head>
 <body class="text-gray-300">
-
+    <header>
+      <nav class="navbar">
+        <div class="logo">Cine<span>Book</span></div>
+        <div class="hamburger" id="hamburger">☰</div>
+        <ul class="nav-links" id="nav-links">
+          <li class="homebtn" id="homepage">
+            <a href="index.html">Home</a>
+          </li>
+          <li><a href="movie.html">Movies</a></li>
+          <li><a href="AboutUs.html">About</a></li>
+          <li><a href="ContactUs.html">Contact Us</a></li>
+          <li><a href="tickets.html">Booked Tickets</a></li>
+          <li class="mobile-login">
+            <button
+              onclick="window.location.href='login.html'"
+              class="login-btn"
+            >
+              Login
+            </button>
+          </li>
+        </ul>
+        <div class="nav-actions">
+          <button onclick="window.location.href='login.html'" class="login-btn">
+            Login
+          </button>
+        </div>
+      </nav>
+    </header>
     <div class="container mx-auto px-4 py-10">
-        <header class="flex items-center justify-between mb-10">
+        <div class="flex items-center justify-between mb-10 ml-2">
             <h1 class="text-3xl font-bold gradient-text">My Booked Tickets</h1>
             <a href="seatIcon.html" class="bg-gray-700 text-white font-bold py-2 px-5 rounded-lg hover:bg-gray-600 transition-colors duration-300 flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -59,7 +56,7 @@
                 </svg>
                 Book More
             </a>
-        </header>
+        </div>
 
         <main id="tickets-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- JavaScript will populate this area -->
@@ -73,40 +70,39 @@
             <p class="text-gray-400 mt-2">Go back to the main page to book your first ticket.</p>
         </div>
     </div>
+    <footer>
+      <div>
+        <h2>
+          <span style="color: white">Cine</span
+          ><span style="color: #e50914">Book</span>
+        </h2>
+        <p>
+          Welcome to <strong>CineBook</strong>, your go-to platform for
+          discovering and booking the latest movies with ease.We combine sleek
+          design, smooth functionality, and a user-friendly interface to give
+          you the best movie ticket booking experience.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const ticketsContainer = document.getElementById('tickets-container');
-            const noTicketsMessage = document.getElementById('no-tickets-message');
-            
-            const myTickets = JSON.parse(localStorage.getItem('my_tickets')) || [];
+      <div class="footer-contact">
+        <h3>GetIn<span style="color: #e50914">Touch</span></h3>
+        <p><i class="fas fa-envelope mb-4"></i> rishabh98@gmail.com</p>
+        <p><i class="fas fa-envelope mb-4"></i> rhythm26@gmail.com</p>
+        <p><i class="fas fa-envelope"></i> rishi78@gmail.com</p>
+      </div>
 
-            if (myTickets.length === 0) {
-                noTicketsMessage.classList.remove('hidden');
-            } else {
-                myTickets.forEach(booking => {
-                    const ticketCard = `
-                        <div class="ticket-card rounded-xl flex">
-                            <div class="p-6 flex-grow">
-                                <p class="text-sm text-red-400 font-semibold">CineBook</p>
-                                <h3 class="text-xl font-bold mt-1 gradient-text">Movie Ticket</h3>
-                                <div class="mt-4 space-y-2 text-sm">
-                                    <p><span class="font-semibold text-gray-400">Date:</span> ${booking.date}</p>
-                                    <p><span class="font-semibold text-gray-400">Time:</span> ${booking.time}</p>
-                                </div>
-                            </div>
-                            <div class="p-6 ticket-stub flex-shrink-0 flex flex-col justify-center items-center w-32">
-                                <p class="text-xs text-gray-400 mb-1">SEATS</p>
-                                <p class="text-lg font-bold text-center gradient-text">${booking.seats.join(', ')}</p>
-                            </div>
-                        </div>
-                    `;
-                    ticketsContainer.innerHTML += ticketCard;
-                });
-            }
-        });
-    </script>
-
+      <div class="bottom-text">
+        <p>Copyright 2025 © CineBook. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script src="../JS/ShowBookedTicket.js"></script>
+    <script src="../JS/ManBurg.js"></script>
 </body>
 </html>
 
