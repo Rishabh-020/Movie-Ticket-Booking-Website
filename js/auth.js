@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.onclick = () => {
         localStorage.setItem("isLoggedIn", "false");
         localStorage.removeItem("username");
-        alert("You have logged out.");
         window.location.reload();
       };
     } else {

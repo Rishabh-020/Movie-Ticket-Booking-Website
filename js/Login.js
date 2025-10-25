@@ -36,27 +36,25 @@ document.addEventListener("DOMContentLoaded", () => {
     let pass = document.getElementById("Password").value.trim();
 
     if (!user || !pass) {
-      alert("Please enter username and password!");
+      showErrorAlert("Please enter username and password!");
       return;
     }
 
     let storedUser = localStorage.getItem(user);
     if (!storedUser) {
-      alert("Unauthorized Access: User does not exist!");
+      showErrorAlert("Unauthorized Access: User does not exist!");
       return;
     }
 
     storedUser = JSON.parse(storedUser);
     if (storedUser.password !== pass) {
-      alert("Incorrect password!");
+      showErrorAlert("Incorrect password!");
       return;
     }
 
     // Save login state for header
     localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("username", user);
-
-    alert("Login successful!");
     window.location.href = "index.html";
   });
 
@@ -70,17 +68,17 @@ document.addEventListener("DOMContentLoaded", () => {
     let confirmPassword = document.getElementById("SignUpPassword").value.trim();
 
     if (!username || !password || !confirmPassword) {
-      alert("All fields are required!");
+      showErrorAlert("All fields are required!");
       return;
     }
 
     if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+      showErrorAlert("Passwords do not match!");
       return;
     }
 
     if (localStorage.getItem(username)) {
-      alert("User already exists!");
+      showErrorAlert("User already exists!");
       return;
     }
 
