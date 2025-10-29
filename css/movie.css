@@ -39,19 +39,26 @@
 
 .buy-btn {
     margin-top: 10px;
-    background: red;
+    background: linear-gradient(to right, #ff0000, #660000);
+    text-decoration: none;
+    color: #fff;
     border: none;
-    padding: 10px 16px;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
-    transition: all 0.3s;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+    display: inline-block;
 }
 
 .buy-btn:hover {
-    background: darkred;
-    transform: scale(1.05);
+    background: linear-gradient(to right, #ff4d4d, #990000);
+    box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+    transform: translateY(-3px) scale(1.03);
 }
 
 .buy-btn.disabled {

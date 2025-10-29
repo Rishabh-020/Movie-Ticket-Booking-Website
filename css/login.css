@@ -190,6 +190,16 @@ body {
 .input-submit:hover{
     gap: 15px;
 }
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 45px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: black;
+    font-size: 18px;
+    display: none;
+}
 .social-login{
     display: flex;
     gap: 20px;
