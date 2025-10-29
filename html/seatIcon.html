@@ -205,6 +205,62 @@
         </section>
     </main>
 
+    <!-- UPI Payment Modal -->
+    <div id="payment-modal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-gray-900 rounded-2xl max-w-md w-full border border-gray-700 shadow-2xl">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-red-600 to-red-700 p-5 rounded-t-2xl">
+                <h2 class="text-white text-xl font-bold text-center">Complete Payment</h2>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6 space-y-5">
+                <!-- Booking Summary -->
+                <div class="bg-gray-800 p-4 rounded-xl space-y-2 border border-gray-700">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400">Show Time:</span>
+                        <span class="text-white font-semibold" id="payment-time">10:30 AM</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400">Seats:</span>
+                        <span class="text-white font-semibold" id="payment-seats">-</span>
+                    </div>
+                    <div class="border-t border-gray-700 pt-2 mt-2">
+                        <div class="flex justify-between">
+                            <span class="text-white font-semibold">Total Amount:</span>
+                            <span class="text-red-500 text-xl font-bold" id="payment-total">$0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UPI Payment -->
+                <div>
+                    <label class="block text-white text-sm mb-3 font-semibold">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                        </svg>
+                        UPI Payment
+                    </label>
+                    <input type="text" id="upi-id" placeholder="Enter UPI ID (e.g., name@upi)" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-red-500 transition-all">
+                    <p class="text-xs text-gray-500 mt-2">Enter your UPI ID to complete payment</p>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex gap-3">
+                    <button onclick="closePaymentModal()" class="flex-1 p-3 bg-gray-800 border border-gray-700 text-white rounded-lg hover:bg-gray-700 transition-all font-semibold">
+                        Cancel
+                    </button>
+                    <button onclick="processPayment()" id="pay-btn" class="flex-1 p-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg font-bold hover:from-red-700 hover:to-red-800 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                        </svg>
+                        Pay Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 opacity-0 -translate-y-10 pointer-events-none">
         <div id="modal-content" class="glass-effect rounded-xl p-8 w-full max-w-sm text-center">
             <h3 class="text-xl font-bold text-white mb-2">Booking Successful!</h3>
@@ -372,25 +428,110 @@
                 if (selectedSeats.length === 0) return;
 
                 const selectedSeatIds = Array.from(selectedSeats).map(seat => seat.dataset.id);
+                let totalPrice = 0;
+                Array.from(selectedSeats).forEach(seat => {
+                    totalPrice += parseInt(seat.dataset.price);
+                });
 
-                const myTickets = JSON.parse(localStorage.getItem('my_tickets')) || [];
-                
-                const newBooking = {
-                    date: new Date().toLocaleDateString('en-CA'),
-                    time: selectedTime,
-                    seats: selectedSeatIds.sort()
+                // Open payment modal
+                openPaymentModal(selectedSeatIds, totalPrice);
+            });
+
+            // Payment Modal Functions
+            let pendingBooking = null;
+
+            window.openPaymentModal = function(seatIds, totalPrice) {
+                pendingBooking = {
+                    seats: seatIds,
+                    total: totalPrice
                 };
 
-                myTickets.push(newBooking);
-                localStorage.setItem('my_tickets', JSON.stringify(myTickets));
+                document.getElementById('payment-time').textContent = selectedTime;
+                document.getElementById('payment-seats').textContent = seatIds.join(', ');
+                document.getElementById('payment-total').textContent = '$' + totalPrice;
+                document.getElementById('upi-id').value = '';
 
-                occupiedSeats = [...occupiedSeats, ...selectedSeatIds];
-                localStorage.setItem(generateStorageKey(selectedTime), JSON.stringify(occupiedSeats));
+                const paymentModal = document.getElementById('payment-modal');
+                paymentModal.classList.remove('hidden');
+                paymentModal.classList.add('flex');
+            };
+
+            window.closePaymentModal = function() {
+                const paymentModal = document.getElementById('payment-modal');
+                paymentModal.classList.add('hidden');
+                paymentModal.classList.remove('flex');
+                document.getElementById('upi-id').value = '';
+                pendingBooking = null;
+            };
+
+            window.processPayment = function() {
+                if (!pendingBooking) return;
+
+                const upiId = document.getElementById('upi-id').value.trim();
                 
-                showModal(`Tickets booked for seats: ${selectedSeatIds.join(', ')}`);
-                generateSeatMap();
-                updateSummary();
-            });
+                if (!upiId || !upiId.includes('@')) {
+                    alert('Please enter a valid UPI ID (e.g., name@upi)');
+                    return;
+                }
+
+                const payBtn = document.getElementById('pay-btn');
+                payBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="inline animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Processing...';
+                payBtn.disabled = true;
+
+                // Process payment after 1.5 seconds
+                setTimeout(() => {
+                    const username = localStorage.getItem('username') || 'Guest';
+                    
+                    // Store values before clearing pendingBooking
+                    const bookedSeats = pendingBooking.seats.join(', ');
+                    const paidAmount = pendingBooking.total;
+                    
+                    // Create booking data
+                    const bookingData = {
+                        id: Date.now(),
+                        username: username,
+                        movieTitle: 'Deadpool & Wolverine',
+                        poster: '../images/deadpool.jpeg',
+                        date: new Date().toLocaleDateString('en-US'),
+                        time: selectedTime,
+                        theater: 'CineBook Cinema Hall 1',
+                        seats: pendingBooking.seats.sort(),
+                        ticketCount: pendingBooking.seats.length,
+                        amount: pendingBooking.total,
+                        bookingDate: new Date().toLocaleString('en-US'),
+                        status: 'Confirmed',
+                        paymentMethod: 'UPI'
+                    };
+
+                    // Save to my_tickets
+                    const myTickets = JSON.parse(localStorage.getItem('my_tickets')) || [];
+                    myTickets.push(bookingData);
+                    localStorage.setItem('my_tickets', JSON.stringify(myTickets));
+
+                    // Save to bookedTickets
+                    const bookedTickets = JSON.parse(localStorage.getItem('bookedTickets')) || [];
+                    bookedTickets.push(bookingData);
+                    localStorage.setItem('bookedTickets', JSON.stringify(bookedTickets));
+
+                    // Mark seats as occupied
+                    occupiedSeats = [...occupiedSeats, ...pendingBooking.seats];
+                    localStorage.setItem(generateStorageKey(selectedTime), JSON.stringify(occupiedSeats));
+                    
+                    // Update seats immediately
+                    generateSeatMap();
+                    updateSummary();
+
+                    // Reset button
+                    payBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" /></svg>Pay Now';
+                    payBtn.disabled = false;
+
+                    // Close payment modal
+                    closePaymentModal();
+                    
+                    // Show success modal with stored values
+                    showModal(`✅ Payment Successful!\n\n$${paidAmount} paid via UPI\nSeats: ${bookedSeats}\n\nYou can book more tickets!`);
+                }, 1500);
+            };
             
             modalClose.addEventListener('click', hideModal);
 

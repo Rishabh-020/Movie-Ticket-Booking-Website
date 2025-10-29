@@ -29,11 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ---------- LOGIN LOGIC ----------
-  const SubmitBtn = document.getElementById("Submit");
-  SubmitBtn.addEventListener("click", (e) => {
+  const loginSubmitBtn = document.getElementById("loginSubmit");
+  loginSubmitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    let user = document.getElementById("Username").value.trim();
-    let pass = document.getElementById("Password").value.trim();
+    let user = document.getElementById("loginUsername").value.trim();
+    let pass = document.getElementById("loginPassword").value.trim();
 
     if (!user || !pass) {
       showErrorAlert("Please enter username and password!");
@@ -55,17 +55,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Save login state for header
     localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("username", user);
-    window.location.href = "index.html";
+    localStorage.setItem("justLoggedIn", "true");
+    
+    showSuccessAlert(`Welcome back, ${user}!`, () => {
+      window.location.href = "index.html";
+    });
   });
 
   // ---------- REGISTER LOGIC ----------
-  const SignSubmit = document.getElementById("SignSubmit");
-  SignSubmit.addEventListener("click", (e) => {
+  const registerSubmitBtn = document.getElementById("registerSubmit");
+  registerSubmitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    const registerInputs = registerForm.querySelectorAll("input");
-    let username = registerInputs[0].value.trim();
-    let password = registerInputs[1].value.trim();
-    let confirmPassword = document.getElementById("SignUpPassword").value.trim();
+    let username = document.getElementById("registerUsername").value.trim();
+    let password = document.getElementById("registerPassword").value.trim();
+    let confirmPassword = document.getElementById("registerConfirmPassword").value.trim();
 
     if (!username || !password || !confirmPassword) {
       showErrorAlert("All fields are required!");
@@ -88,9 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Save login state for header
     localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("username", username);
+    localStorage.setItem("justLoggedIn", "true");
 
-    alert("Account created successfully! You are logged in.");
-    window.location.href = "index.html";
+    showSuccessAlert(`Account created successfully! Welcome, ${username}!`, () => {
+      window.location.href = "index.html";
+    });
   });
 
   // ---------- PASSWORD TOGGLE ----------
