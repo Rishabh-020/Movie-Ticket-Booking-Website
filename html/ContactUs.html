@@ -42,7 +42,7 @@
     </div>
     <div class="container">
       <div class="form-page">
-        <form action="" method="post">
+        <form id="contactForm" action="" method="post">
           <h2>Contact Us</h2>
           <h1 style="margin-top: 10px">Get In Touch</h1>
           <br /><br />
@@ -50,6 +50,7 @@
           <input
             type="text"
             name="name"
+            id="contactName"
             class="form-input"
             placeholder="Your Name..."
             required
@@ -58,14 +59,15 @@
           <input
             type="email"
             name="email"
+            id="contactEmail"
             class="form-input"
             placeholder="example@gmail.com"
             required
           /><br />
           Subject <br />
-          <input type="text"name="subject" class="form-input" placeholder="Title..."required/><br />
+          <input type="text" name="subject" id="contactSubject" class="form-input" placeholder="Title..." required/><br />
           Message <br />
-          <textarea name="message" id="textarea"placeholder="Type Here..."required></textarea><br />
+          <textarea name="message" id="contactMessage" class="form-input" placeholder="Type Here..." required></textarea><br />
           <button type="submit" id="subbtn">Send Now</button>
         </form>
       </div>
@@ -158,5 +160,31 @@
     <script src="/JS/ManBurg.js"></script>
     <script src="../JS/modal.js"></script>
     <script src="../JS/auth.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submission = {
+                id: Date.now(),
+                name: document.getElementById('contactName').value,
+                email: document.getElementById('contactEmail').value,
+                subject: document.getElementById('contactSubject').value,
+                message: document.getElementById('contactMessage').value,
+                submittedAt: new Date().toISOString(),
+                status: 'pending'
+            };
+            
+            let submissions = JSON.parse(localStorage.getItem('contactSubmissions')) || [];
+            submissions.push(submission);
+            localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+            
+            if (typeof showSuccessAlert === 'function') {
+                showSuccessAlert('Thank you! Your message has been sent successfully.', () => this.reset());
+            } else {
+                alert('Thank you! Your message has been sent successfully.');
+                this.reset();
+            }
+        });
+    </script>
   </body>
 </html>

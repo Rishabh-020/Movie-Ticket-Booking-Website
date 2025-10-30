@@ -28,6 +28,7 @@
           <li><a href="movie.html">Movies</a></li>
           <li><a href="AboutUs.html">About</a></li>
           <li><a href="ContactUs.html">Contact Us</a></li>
+          <li><a href="tickets.html">Booked Tickets</a></li>
           <li class="mobile-login">
           <button class="login-btn">Login</button>
           </li>
@@ -49,7 +50,7 @@
           />
           <h3>JOKER</h3>
           <p>2019 · Thriller | Crime · 2h 5m</p>
-          <button class="buy-btn">Buy Tickets</button>
+            <button class="buy-btn" onclick="checkStatus(event,'PerviewPage.html')">Buy Tickets</button>
         </div>
 
         <!-- Add more movies here -->
@@ -60,7 +61,7 @@
           />
           <h3>THE LAST OF US</h3>
           <p>2018 · Adventure | Survival · 3h 2m</p>
-          <button class="buy-btn">Buy Tickets</button>
+            <button class="buy-btn" onclick="checkStatus(event,'PerviewPage.html')">Buy Tickets</button>
         </div>
 
         <div class="movie-card">
@@ -70,7 +71,7 @@
           />
           <h3>F1</h3>
           <p>2025 · Action | Racing · 2h 7m</p>
-          <button class="buy-btn">Buy Tickets</button>
+            <button class="buy-btn" onclick="checkStatus(event,'PerviewPage.html')">Buy Tickets</button>
         </div>
 
         <div class="movie-card">
@@ -141,6 +142,32 @@
         <p>Copyright 2025 © CineBook. All Rights Reserved.</p>
       </div>
     </footer>
-    <script src="/JS/ManBurg.js"></script>
+    <script src="../js/modal.js"></script>
+    <script>
+      function checkStatus(e, target = 'PerviewPage.html', el='Login.html') {
+        if (e && typeof e.preventDefault === 'function') e.preventDefault();
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        
+        if (isLoggedIn === 'true') {
+          // User is logged in - proceed to preview page
+          window.location.href = target;
+          return true;
+        } else {
+          // User is not logged in - show error modal
+          if (typeof showErrorAlert === 'function') {
+            showErrorAlert('Please login to book tickets', () => {
+              window.location.href = el;
+            });
+          } else {
+            // Fallback to browser alert if modal function not available
+            alert('Please login to buy tickets.');
+            window.location.href = el;
+          }
+          return false;
+        }
+      }
+    </script>
+    <script src="../js/ManBurg.js"></script>
+    <script src="../js/auth.js"></script>
   </body>
 </html>
